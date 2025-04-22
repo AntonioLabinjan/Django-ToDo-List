@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <h1>ToDo Lista</h1>
+<p style="background-color: #f1c40f; display: inline-block; padding: 6px 12px; border-radius: 8px; color: #fff;">
+  Ukupno zadataka: <strong>{{ total_tasks }}</strong>
+</p>
+
+
 <a href="{% url 'task_create' %}">Dodaj novi zadatak</a>
 <ul>
   {% for task in tasks %}
