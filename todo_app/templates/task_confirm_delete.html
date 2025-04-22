@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<h1>Obriši zadatak</h1>
+<p>Jesi siguran da želiš obrisati "{{ task.title }}"?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Da, obriši</button>
+  <a href="{% url 'task_list' %}">Odustani</a>
+</form>
