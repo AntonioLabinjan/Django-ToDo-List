@@ -4,9 +4,21 @@ from .models import Task
 # funkcija koja prima request
 # po primitku requesta, dohvaća sve objekte klase task
 # vraća renderiranu stranicu task_list.html i dinamički sprema u nju sve ča je spremljeno u varijablu task
+'''
 def task_list(request):
     tasks = Task.objects.all()
     return render(request, 'task_list.html', {'tasks': tasks})
+'''
+# New verzija koja još računa count svih zadataka i to dinamički šalje u html
+def task_list(request):
+    tasks = Task.objects.all()
+    total_tasks = tasks.count()
+
+    return render(request, 'task_list.html', {
+        'tasks': tasks,
+        'total_tasks': total_tasks
+    })
+
 
 # funkcija koja prima request
 # ako je metoda requesta post, onda iz njega dohvati title i description, spremi ih u pripadne varijable i kreiraj instancu klase task s tim podacima
